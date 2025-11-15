@@ -25,8 +25,12 @@ def get_next_word_packet(s):
     # TODO -- Write me!
     next_word = s.recv(WORD_LEN_SIZE)
     packet_buffer += next_word
-    x = packet_buffer.hex()
-    return x
+    print(packet_buffer)
+    print("beginning: ", packet_buffer[0])
+    print("end: ", packet_buffer[-1])
+    for i in packet_buffer:
+        print(i)
+    return packet_buffer
 
 def extract_word(word_packet):
     """
@@ -39,6 +43,8 @@ def extract_word(word_packet):
     """
 
     # TODO -- Write me!
+    word = None
+    return word
 
 # Do not modify:
 
@@ -57,8 +63,6 @@ def main(argv):
 
     while True:
         word_packet = get_next_word_packet(s)
-        print("Word Packet:", word_packet)
-        print("End of Word Packet:", word_packet[-1])
         if word_packet is None:
             break
 
