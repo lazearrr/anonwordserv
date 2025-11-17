@@ -25,9 +25,12 @@ def get_next_word_packet(s):
     # TODO -- Write me!
     next_word = s.recv(WORD_LEN_SIZE)
     packet_buffer += next_word
-    hex_packet = packet_buffer.hex()
-    word_packet = hex_packet[3:]
-    return word_packet
+    if packet_buffer[1]:
+        data = packet_buffer[1:]
+        return data
+    else:
+        data = None
+        return data
 
 def extract_word(word_packet):
     """
@@ -41,9 +44,9 @@ def extract_word(word_packet):
 
     # TODO -- Write me!
     
-    word = word_packet[0:2)
-    word = word_packet
-    return word
+    print(word_packet.hex())
+    words = word_packet.decode()
+    return words
 
 # Do not modify:
 
